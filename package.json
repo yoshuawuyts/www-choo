@@ -44,6 +44,7 @@
     "http-ndjson": "^3.0.0",
     "hyperxify": "^2.0.1",
     "insert-css": "^0.2.0",
+    "mdjson": "^2.0.1",
     "pull-http": "^1.0.2",
     "pull-stream": "^3.2.3",
     "server-router": "^2.1.0",
