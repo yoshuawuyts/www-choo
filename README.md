@@ -8,6 +8,12 @@ Site for choo.
 $ git clone https://github.com/yoshuawuyts/www-choo
 ```
 
+## Credits
+- Hugh Kennedy - bestest of friends, creator of squiggly octopi
+- Xor -[:steam_locomotive::train::train::train::train:][choochoobot]
+- Adam Morse - pretty type things in [tachyons](http://tachyons.io) made their
+  way into this. `tachyons` did too. So did `basscss`. But not all of it.
+
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
 
@@ -19,3 +25,5 @@ $ git clone https://github.com/yoshuawuyts/www-choo
 [7]: https://codecov.io/github/yoshuawuyts/www-choo
 [10]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
 [11]: https://github.com/feross/standard
+
+[choochoobot]: https://twitter.com/choochoobot
