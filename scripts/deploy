@@ -1,1 +1,20 @@
 #!/bin/sh
+
+dirname=$(dirname "$(readlink -f "$0")")
+gh_deploy="$dirname/../node_modules/.bin/gh-pages"
+
+# start node
+npm run start&
+pid="$!"
+sleep 5
+
+# write files to disk
+mkdir -p dist
+curl localhost:8080/ > dist/index.html
+curl localhost:8080/bundle.js > dist/bundle.js
+
+# deploy
+"$gh_deploy" -d dist/
+
+# kill node
+kill "$pid"
