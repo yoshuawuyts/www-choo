@@ -5,6 +5,7 @@ sf('css-wipe')
 sf('basscss')
 sf('tachyons-type-scale')
 sf('tachyons-font-family')
+sf('tachyons-line-height')
 
 const headlineView = require('./views/headline')
 const statsView = require('./views/stats')

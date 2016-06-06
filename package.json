@@ -8,7 +8,7 @@
     "dev": "linklocal link -r && linklocal list -r | bulk -c 'npm install --production'",
     "prepublish": "if [ \"$NODE_ENV\" != \"production\" ]; then npm run dev; fi",
     "start": "node .",
-    "start:watch": "NODE_ENV=development nodemon -i 'node_modules/' -i 'client*' -i 'component*' -- ./index.js | garnish",
+    "start:watch": "NODE_ENV=development nodemon -i 'node_modules/' -i 'views*' -i 'elements*' -i 'client.js' -- ./index.js | garnish",
     "test": "standard && npm run deps && NODE_ENV=test node test",
     "test:cov": "standard && npm run deps && NODE_ENV=test istanbul cover test.js",
     "watch": "npm run start:watch"
@@ -52,6 +52,7 @@
     "sheetify": "^5.0.1",
     "sheetify-cssnext": "^1.0.7",
     "tachyons-font-family": "^4.1.2",
+    "tachyons-line-height": "^2.0.4",
     "tachyons-type-scale": "^5.0.3",
     "virtual-app": "^3.0.0",
     "virtual-dom": "^2.1.1"
