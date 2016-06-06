@@ -1,0 +1,69 @@
+{
+  "name": "www-choo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm-modules",
+    "deps": "dependency-check . && dependency-check . --extra --no-dev",
+    "dev": "linklocal link -r && linklocal list -r | bulk -c 'npm install --production'",
+    "prepublish": "if [ \"$NODE_ENV\" != \"production\" ]; then npm run dev; fi",
+    "start": "node .",
+    "start:watch": "NODE_ENV=development nodemon -i 'node_modules/' -i 'client*' -i 'component*' -- ./index.js | garnish",
+    "test": "standard && npm run deps && NODE_ENV=test node test",
+    "test:cov": "standard && npm run deps && NODE_ENV=test istanbul cover test.js",
+    "watch": "npm run start:watch"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "sheetify/transform",
+        {
+          "use": [
+            [
+              "sheetify-cssnext",
+              {
+                "sourcemap": false
+              }
+            ]
+          ]
+        }
+      ],
+      "hyperxify",
+      "brfs"
+    ]
+  },
+  "dependencies": {
+    "bankai": "^2.0.2",
+    "basscss": "^8.0.1",
+    "bel": "^4.3.1",
+    "bole": "^2.0.0",
+    "brfs": "^1.4.3",
+    "browserify": "^13.0.1",
+    "choo": "^2.1.6",
+    "css-wipe": "^4.2.2",
+    "http-ndjson": "^3.0.0",
+    "hyperxify": "^2.0.1",
+    "insert-css": "^0.2.0",
+    "pull-http": "^1.0.2",
+    "pull-stream": "^3.2.3",
+    "server-router": "^2.1.0",
+    "server-summary": "^6.0.1",
+    "sheet-router": "^3.1.0",
+    "sheetify": "^5.0.1",
+    "sheetify-cssnext": "^1.0.7",
+    "tachyons-font-family": "^4.1.2",
+    "tachyons-type-scale": "^5.0.3",
+    "virtual-app": "^3.0.0",
+    "virtual-dom": "^2.1.1"
+  },
+  "devDependencies": {
+    "bulk": "^2.0.0",
+    "dependency-check": "^2.5.1",
+    "garnish": "^5.2.0",
+    "istanbul": "^0.4.3",
+    "linklocal": "^2.6.0",
+    "nodemon": "^1.9.1",
+    "standard": "^7.1.1",
+    "tape": "^4.5.1"
+  }
+}
