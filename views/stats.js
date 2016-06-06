@@ -13,13 +13,11 @@ const size = '7.14kb'
 
 function statsView () {
   return view`
-    <section
-      class="flex flex-column mx-auto"
-      style="max-width: 400px;">
+    <section class="flex flex-column mx-auto px2 max-width-2">
       <div class="mb3">
-        <span class="f4 bold mr3 sans-serif">choo</span>
-        <span class="f4 bold mr3 sans-serif">${version}</span>
-        <span class="f4 bold mr3 sans-serif">${size}</span>
+        <span class="f2 f4-ns bold mr3 sans-serif">choo</span>
+        <span class="f2 f4-ns bold mr3 sans-serif">${version}</span>
+        <span class="f2 f4-ns bold mr3 sans-serif">${size}</span>
       </div>
       <div class="mb3">
         ${createDescriptions(descriptions)}
@@ -32,8 +30,8 @@ function createDescriptions (descriptions) {
   return descriptions.map((description) => {
     return view`
       <dl class="inline-block pr3">
-        <dt class="f6 code">${description.name}</dt>
-        <dd class="f4 f2-ns bold lh-title sans-serif">${description.value}</dd>
+        <dt class="f3 f6-ns code">${description.name}</dt>
+        <dd class="f1 f2-ns bold lh-title sans-serif">${description.value}</dd>
       </dl>
     `
   })
