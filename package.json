@@ -61,6 +61,7 @@
     "bulk": "^2.0.0",
     "dependency-check": "^2.5.1",
     "garnish": "^5.2.0",
+    "gh-pages": "^0.11.0",
     "istanbul": "^0.4.3",
     "linklocal": "^2.6.0",
     "nodemon": "^1.9.1",
