@@ -2,8 +2,8 @@ const view = require('bel')
 
 const content = `
   Choo is a cute little framework that does more with less. It's fun, fast, and
-  packs a functional lil' architecture. It can be rendered anywhere and runs
-  real smooth.
+  packs a functional lil' architecture. It can be rendered anywhere and doesn't
+  discriminate between soloists and large teams.
 `
 
 module.exports = footer
