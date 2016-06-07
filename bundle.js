@@ -2,34 +2,32 @@
 const sf = 0
 const choo = require('choo')
 
+const wrapRoot = require('./elements/wrap-root')
+
 ;((require('insert-css')("* {\n  box-sizing: border-box;\n}\n/* webkit specific styles */\n\ninput[type=\"color\"]::-webkit-color-swatch {\n  border: none;\n}\n\ninput[type=\"color\"]::-webkit-color-swatch-wrapper {\n  padding: 0;\n}\n/*\nhtml5doctor.com Reset Stylesheet\nv1.6.1\nLast Updated: 2010-09-17\nAuthor: Richard Clark - http://richclarkdesign.com\nTwitter: @rich_clark\n*/\n\nhtml, body, div, span, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\nabbr, address, cite, code,\ndel, dfn, em, img, ins, kbd, q, samp,\nsmall, strong, sub, sup, var,\nb, i,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section, summary,\ntime, mark, audio, video {\n    margin:0;\n    padding:0;\n    border:0;\n    outline:0;\n    font-size:100%;\n    vertical-align:baseline;\n    background:transparent;\n    font-weight:inherit;\n}\n\nbody {\n    line-height:1;\n}\n\narticle,aside,details,figcaption,figure,\nfooter,header,hgroup,menu,nav,section {\n    display:block;\n}\n\nnav ul {\n    list-style:none;\n}\n\nblockquote, q {\n    quotes:none;\n}\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n    content:'';\n    content:none;\n}\n\na {\n    margin:0;\n    padding:0;\n    font-size:100%;\n    vertical-align:baseline;\n    background:transparent;\n}\n\n/* change colours to suit your needs */\nins {\n    background-color:#ff9;\n    color:#000;\n    text-decoration:none;\n}\n\n/* change colours to suit your needs */\nmark {\n    background-color:#ff9;\n    color:#000;\n    font-style:italic;\n    font-weight:bold;\n}\n\ndel {\n    text-decoration: line-through;\n}\n\nabbr[title], dfn[title] {\n    border-bottom:1px dotted;\n    cursor:help;\n}\n\ntable {\n    border-collapse:collapse;\n    border-spacing:0;\n}\n\n/* change border colour to suit your needs */\nhr {\n    display:block;\n    height:1px;\n    border:0;\n    border-top:1px solid #cccccc;\n    margin:1em 0;\n    padding:0;\n}\n\ninput, select {\n    vertical-align:middle;\n}\n\ninput:focus {\n  outline: none;\n}\nul, ol {\n  list-style-type: none;\n}\n") || true) && "_18f56cf1")
 ;((require('insert-css')("/*! Basscss | http://basscss.com | MIT License */\n\n/* Basscss Type Scale */\n\n.h1 { font-size: 32px; font-size: 2rem }\n.h2 { font-size: 24px; font-size: 1.5rem }\n.h3 { font-size: 20px; font-size: 1.25rem }\n.h4 { font-size: 16px; font-size: 1rem }\n.h5 { font-size: 14px; font-size: .875rem }\n.h6 { font-size: 12px; font-size: .75rem }\n/* Basscss Typography */\n\n.font-family-inherit { font-family: inherit }\n.font-size-inherit { font-size: inherit }\n.text-decoration-none { text-decoration: none }\n\n.bold    { font-weight: bold; font-weight: bold }\n.regular { font-weight: normal }\n.italic  { font-style: italic }\n.caps    { text-transform: uppercase; letter-spacing: .2em; }\n\n.left-align   { text-align: left }\n.center       { text-align: center }\n.right-align  { text-align: right }\n.justify      { text-align: justify }\n\n.nowrap { white-space: nowrap }\n.break-word { word-wrap: break-word }\n\n.line-height-1 { line-height: 1 }\n.line-height-2 { line-height: 1.125 }\n.line-height-3 { line-height: 1.25 }\n.line-height-4 { line-height: 1.5 }\n\n.list-style-none { list-style: none }\n.underline { text-decoration: underline }\n\n.truncate {\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.list-reset {\n  list-style: none;\n  padding-left: 0;\n}\n/* Basscss Layout */\n\n.inline       { display: inline }\n.block        { display: block }\n.inline-block { display: inline-block }\n.table        { display: table }\n.table-cell   { display: table-cell }\n\n.overflow-hidden { overflow: hidden }\n.overflow-scroll { overflow: scroll }\n.overflow-auto   { overflow: auto }\n\n.clearfix:before,\n.clearfix:after {\n  content: \" \";\n  display: table\n}\n.clearfix:after { clear: both }\n\n.left  { float: left }\n.right { float: right }\n\n.fit { max-width: 100% }\n\n.max-width-1 { max-width: 384px; max-width: 24rem }\n.max-width-2 { max-width: 512px; max-width: 32rem }\n.max-width-3 { max-width: 768px; max-width: 48rem }\n.max-width-4 { max-width: 1024px; max-width: 64rem }\n\n.border-box { box-sizing: border-box }\n/* Basscss Align */\n\n.align-baseline { vertical-align: baseline }\n.align-top      { vertical-align: top }\n.align-middle   { vertical-align: middle }\n.align-bottom   { vertical-align: bottom }\n/* Basscss Margin */\n\n.m0  { margin:        0 }\n.mt0 { margin-top:    0 }\n.mr0 { margin-right:  0 }\n.mb0 { margin-bottom: 0 }\n.ml0 { margin-left:   0 }\n.mx0 { margin-left:   0; margin-right:  0 }\n.my0 { margin-top:    0; margin-bottom: 0 }\n\n.m1  { margin: 8px; margin: .5rem }\n.mt1 { margin-top: 8px; margin-top: .5rem }\n.mr1 { margin-right: 8px; margin-right: .5rem }\n.mb1 { margin-bottom: 8px; margin-bottom: .5rem }\n.ml1 { margin-left: 8px; margin-left: .5rem }\n.mx1 { margin-left: 8px; margin-left: .5rem; margin-right: 8px; margin-right: .5rem }\n.my1 { margin-top: 8px; margin-top: .5rem; margin-bottom: 8px; margin-bottom: .5rem }\n\n.m2  { margin: 16px; margin: 1rem }\n.mt2 { margin-top: 16px; margin-top: 1rem }\n.mr2 { margin-right: 16px; margin-right: 1rem }\n.mb2 { margin-bottom: 16px; margin-bottom: 1rem }\n.ml2 { margin-left: 16px; margin-left: 1rem }\n.mx2 { margin-left: 16px; margin-left: 1rem; margin-right: 16px; margin-right: 1rem }\n.my2 { margin-top: 16px; margin-top: 1rem; margin-bottom: 16px; margin-bottom: 1rem }\n\n.m3  { margin: 32px; margin: 2rem }\n.mt3 { margin-top: 32px; margin-top: 2rem }\n.mr3 { margin-right: 32px; margin-right: 2rem }\n.mb3 { margin-bottom: 32px; margin-bottom: 2rem }\n.ml3 { margin-left: 32px; margin-left: 2rem }\n.mx3 { margin-left: 32px; margin-left: 2rem; margin-right: 32px; margin-right: 2rem }\n.my3 { margin-top: 32px; margin-top: 2rem; margin-bottom: 32px; margin-bottom: 2rem }\n\n.m4  { margin: 64px; margin: 4rem }\n.mt4 { margin-top: 64px; margin-top: 4rem }\n.mr4 { margin-right: 64px; margin-right: 4rem }\n.mb4 { margin-bottom: 64px; margin-bottom: 4rem }\n.ml4 { margin-left: 64px; margin-left: 4rem }\n.mx4 { margin-left: 64px; margin-left: 4rem; margin-right: 64px; margin-right: 4rem }\n.my4 { margin-top: 64px; margin-top: 4rem; margin-bottom: 64px; margin-bottom: 4rem }\n\n.mxn1 { margin-left: -8px; margin-left: -.5rem; margin-right: -8px; margin-right: -.5rem; }\n.mxn2 { margin-left: -16px; margin-left: -1rem; margin-right: -16px; margin-right: -1rem; }\n.mxn3 { margin-left: -32px; margin-left: -2rem; margin-right: -32px; margin-right: -2rem; }\n.mxn4 { margin-left: -64px; margin-left: -4rem; margin-right: -64px; margin-right: -4rem; }\n\n.ml-auto { margin-left: auto }\n.mr-auto { margin-right: auto }\n.mx-auto { margin-left: auto; margin-right: auto; }\n/* Basscss Padding */\n\n.p0  { padding: 0 }\n.pt0 { padding-top: 0 }\n.pr0 { padding-right: 0 }\n.pb0 { padding-bottom: 0 }\n.pl0 { padding-left: 0 }\n.px0 { padding-left: 0; padding-right:  0 }\n.py0 { padding-top: 0;  padding-bottom: 0 }\n\n.p1  { padding: 8px; padding: .5rem }\n.pt1 { padding-top: 8px; padding-top: .5rem }\n.pr1 { padding-right: 8px; padding-right: .5rem }\n.pb1 { padding-bottom: 8px; padding-bottom: .5rem }\n.pl1 { padding-left: 8px; padding-left: .5rem }\n.py1 { padding-top: 8px; padding-top: .5rem; padding-bottom: 8px; padding-bottom: .5rem }\n.px1 { padding-left: 8px; padding-left: .5rem; padding-right: 8px; padding-right: .5rem }\n\n.p2  { padding: 16px; padding: 1rem }\n.pt2 { padding-top: 16px; padding-top: 1rem }\n.pr2 { padding-right: 16px; padding-right: 1rem }\n.pb2 { padding-bottom: 16px; padding-bottom: 1rem }\n.pl2 { padding-left: 16px; padding-left: 1rem }\n.py2 { padding-top: 16px; padding-top: 1rem; padding-bottom: 16px; padding-bottom: 1rem }\n.px2 { padding-left: 16px; padding-left: 1rem; padding-right: 16px; padding-right: 1rem }\n\n.p3  { padding: 32px; padding: 2rem }\n.pt3 { padding-top: 32px; padding-top: 2rem }\n.pr3 { padding-right: 32px; padding-right: 2rem }\n.pb3 { padding-bottom: 32px; padding-bottom: 2rem }\n.pl3 { padding-left: 32px; padding-left: 2rem }\n.py3 { padding-top: 32px; padding-top: 2rem; padding-bottom: 32px; padding-bottom: 2rem }\n.px3 { padding-left: 32px; padding-left: 2rem; padding-right: 32px; padding-right: 2rem }\n\n.p4  { padding: 64px; padding: 4rem }\n.pt4 { padding-top: 64px; padding-top: 4rem }\n.pr4 { padding-right: 64px; padding-right: 4rem }\n.pb4 { padding-bottom: 64px; padding-bottom: 4rem }\n.pl4 { padding-left: 64px; padding-left: 4rem }\n.py4 { padding-top: 64px; padding-top: 4rem; padding-bottom: 64px; padding-bottom: 4rem }\n.px4 { padding-left: 64px; padding-left: 4rem; padding-right: 64px; padding-right: 4rem }\n/* Basscss Grid */\n\n.col {\n  float: left;\n  box-sizing: border-box;\n}\n\n.col-right {\n  float: right;\n  box-sizing: border-box;\n}\n\n.col-1 {\n  width: 8.33333%;\n}\n\n.col-2 {\n  width: 16.66667%;\n}\n\n.col-3 {\n  width: 25%;\n}\n\n.col-4 {\n  width: 33.33333%;\n}\n\n.col-5 {\n  width: 41.66667%;\n}\n\n.col-6 {\n  width: 50%;\n}\n\n.col-7 {\n  width: 58.33333%;\n}\n\n.col-8 {\n  width: 66.66667%;\n}\n\n.col-9 {\n  width: 75%;\n}\n\n.col-10 {\n  width: 83.33333%;\n}\n\n.col-11 {\n  width: 91.66667%;\n}\n\n.col-12 {\n  width: 100%;\n}\n@media (min-width: 40em) {\n\n  .sm-col {\n    float: left;\n    box-sizing: border-box;\n  }\n\n  .sm-col-right {\n    float: right;\n    box-sizing: border-box;\n  }\n\n  .sm-col-1 {\n    width: 8.33333%;\n  }\n\n  .sm-col-2 {\n    width: 16.66667%;\n  }\n\n  .sm-col-3 {\n    width: 25%;\n  }\n\n  .sm-col-4 {\n    width: 33.33333%;\n  }\n\n  .sm-col-5 {\n    width: 41.66667%;\n  }\n\n  .sm-col-6 {\n    width: 50%;\n  }\n\n  .sm-col-7 {\n    width: 58.33333%;\n  }\n\n  .sm-col-8 {\n    width: 66.66667%;\n  }\n\n  .sm-col-9 {\n    width: 75%;\n  }\n\n  .sm-col-10 {\n    width: 83.33333%;\n  }\n\n  .sm-col-11 {\n    width: 91.66667%;\n  }\n\n  .sm-col-12 {\n    width: 100%;\n  }\n\n}\n@media (min-width: 52em) {\n\n  .md-col {\n    float: left;\n    box-sizing: border-box;\n  }\n\n  .md-col-right {\n    float: right;\n    box-sizing: border-box;\n  }\n\n  .md-col-1 {\n    width: 8.33333%;\n  }\n\n  .md-col-2 {\n    width: 16.66667%;\n  }\n\n  .md-col-3 {\n    width: 25%;\n  }\n\n  .md-col-4 {\n    width: 33.33333%;\n  }\n\n  .md-col-5 {\n    width: 41.66667%;\n  }\n\n  .md-col-6 {\n    width: 50%;\n  }\n\n  .md-col-7 {\n    width: 58.33333%;\n  }\n\n  .md-col-8 {\n    width: 66.66667%;\n  }\n\n  .md-col-9 {\n    width: 75%;\n  }\n\n  .md-col-10 {\n    width: 83.33333%;\n  }\n\n  .md-col-11 {\n    width: 91.66667%;\n  }\n\n  .md-col-12 {\n    width: 100%;\n  }\n\n}\n@media (min-width: 64em) {\n\n  .lg-col {\n    float: left;\n    box-sizing: border-box;\n  }\n\n  .lg-col-right {\n    float: right;\n    box-sizing: border-box;\n  }\n\n  .lg-col-1 {\n    width: 8.33333%;\n  }\n\n  .lg-col-2 {\n    width: 16.66667%;\n  }\n\n  .lg-col-3 {\n    width: 25%;\n  }\n\n  .lg-col-4 {\n    width: 33.33333%;\n  }\n\n  .lg-col-5 {\n    width: 41.66667%;\n  }\n\n  .lg-col-6 {\n    width: 50%;\n  }\n\n  .lg-col-7 {\n    width: 58.33333%;\n  }\n\n  .lg-col-8 {\n    width: 66.66667%;\n  }\n\n  .lg-col-9 {\n    width: 75%;\n  }\n\n  .lg-col-10 {\n    width: 83.33333%;\n  }\n\n  .lg-col-11 {\n    width: 91.66667%;\n  }\n\n  .lg-col-12 {\n    width: 100%;\n  }\n\n}\n.flex { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex }\n\n@media (min-width: 40em) {\n  .sm-flex { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex }\n}\n\n@media (min-width: 52em) {\n  .md-flex { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex }\n}\n\n@media (min-width: 64em) {\n  .lg-flex { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex }\n}\n\n.flex-column  { -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column }\n.flex-wrap    { -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap }\n\n.items-start    { -webkit-box-align: start; -webkit-align-items: flex-start; -ms-flex-align: start; align-items: flex-start }\n.items-end      { -webkit-box-align: end; -webkit-align-items: flex-end; -ms-flex-align: end; align-items: flex-end }\n.items-center   { -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center }\n.items-baseline { -webkit-box-align: baseline; -webkit-align-items: baseline; -ms-flex-align: baseline; align-items: baseline }\n.items-stretch  { -webkit-box-align: stretch; -webkit-align-items: stretch; -ms-flex-align: stretch; align-items: stretch }\n\n.self-start    { -webkit-align-self: flex-start; -ms-flex-item-align: start; align-self: flex-start }\n.self-end      { -webkit-align-self: flex-end; -ms-flex-item-align: end; align-self: flex-end }\n.self-center   { -webkit-align-self: center; -ms-flex-item-align: center; align-self: center }\n.self-baseline { -webkit-align-self: baseline; -ms-flex-item-align: baseline; align-self: baseline }\n.self-stretch  { -webkit-align-self: stretch; -ms-flex-item-align: stretch; align-self: stretch }\n\n.justify-start   { -webkit-box-pack: start; -webkit-justify-content: flex-start; -ms-flex-pack: start; justify-content: flex-start }\n.justify-end     { -webkit-box-pack: end; -webkit-justify-content: flex-end; -ms-flex-pack: end; justify-content: flex-end }\n.justify-center  { -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center }\n.justify-between { -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between }\n.justify-around  { -webkit-justify-content: space-around; -ms-flex-pack: distribute; justify-content: space-around }\n\n.content-start   { -webkit-align-content: flex-start; -ms-flex-line-pack: start; align-content: flex-start }\n.content-end     { -webkit-align-content: flex-end; -ms-flex-line-pack: end; align-content: flex-end }\n.content-center  { -webkit-align-content: center; -ms-flex-line-pack: center; align-content: center }\n.content-between { -webkit-align-content: space-between; -ms-flex-line-pack: justify; align-content: space-between }\n.content-around  { -webkit-align-content: space-around; -ms-flex-line-pack: distribute; align-content: space-around }\n.content-stretch { -webkit-align-content: stretch; -ms-flex-line-pack: stretch; align-content: stretch }\n\n/* 1. Fix for Chrome 44 bug. https://code.google.com/p/chromium/issues/detail?id=506893 */\n.flex-auto {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n  min-width: 0; /* 1 */\n  min-height: 0; /* 1 */\n}\n.flex-none { -webkit-box-flex: 0; -webkit-flex: none; -ms-flex: none; flex: none }\n\n.order-0 { -webkit-box-ordinal-group: 1; -webkit-order: 0; -ms-flex-order: 0; order: 0 }\n.order-1 { -webkit-box-ordinal-group: 2; -webkit-order: 1; -ms-flex-order: 1; order: 1 }\n.order-2 { -webkit-box-ordinal-group: 3; -webkit-order: 2; -ms-flex-order: 2; order: 2 }\n.order-3 { -webkit-box-ordinal-group: 4; -webkit-order: 3; -ms-flex-order: 3; order: 3 }\n.order-last { -webkit-box-ordinal-group: 100000; -webkit-order: 99999; -ms-flex-order: 99999; order: 99999 }\n/* Basscss Position */\n\n.relative { position: relative }\n.absolute { position: absolute }\n.fixed    { position: fixed }\n\n.top-0    { top: 0 }\n.right-0  { right: 0 }\n.bottom-0 { bottom: 0 }\n.left-0   { left: 0 }\n\n.z1 { z-index: 1 }\n.z2 { z-index: 2 }\n.z3 { z-index: 3 }\n.z4 { z-index: 4 }\n/* Basscss Border */\n\n.border {\n  border-style: solid;\n  border-width: 1px;\n}\n\n.border-top {\n  border-top-style: solid;\n  border-top-width: 1px;\n}\n\n.border-right {\n  border-right-style: solid;\n  border-right-width: 1px;\n}\n\n.border-bottom {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n}\n\n.border-left {\n  border-left-style: solid;\n  border-left-width: 1px;\n}\n\n.border-none { border: 0 }\n\n.rounded { border-radius: 3px }\n.circle  { border-radius: 50% }\n\n.rounded-top    { border-radius: 3px 3px 0 0 }\n.rounded-right  { border-radius: 0 3px 3px 0 }\n.rounded-bottom { border-radius: 0 0 3px 3px }\n.rounded-left   { border-radius: 3px 0 0 3px }\n\n.not-rounded { border-radius: 0 }\n/* Basscss Hide */\n\n.hide {\n  position: absolute !important;\n  height: 1px;\n  width: 1px;\n  overflow: hidden;\n  clip: rect(1px, 1px, 1px, 1px);\n}\n\n@media (max-width: 40em) {\n  .xs-hide { display: none !important }\n}\n\n@media (min-width: 40em) and (max-width: 52em) {\n  .sm-hide { display: none !important }\n}\n\n@media (min-width: 52em) and (max-width: 64em) {\n  .md-hide { display: none !important }\n}\n\n@media (min-width: 64em) {\n  .lg-hide { display: none !important }\n}\n\n.display-none { display: none !important }\n\n") || true) && "_fb2c7d7c")
 ;((require('insert-css')("/*\n\n   TYPE SCALE\n\n*/\n\n/* For Hero Titles */\n.f-6,\n.f-headline {\n  font-size: 96px;\n  font-size: 6rem;\n}\n.f-5,\n.f-subheadline {\n  font-size: 80px;\n  font-size: 5rem;\n}\n\n/* Type Scale */\n.f1 { font-size: 48px; font-size: 3rem; }\n.f2 { font-size: 36px; font-size: 2.25rem; }\n.f3 { font-size: 24px; font-size: 1.5rem; }\n.f4 { font-size: 20px; font-size: 1.25rem; }\n.f5 { font-size: 16px; font-size: 1rem; }\n.f6 { font-size: 14px; font-size: .875rem; }\n\n@media screen and (min-width: 48em){\n  .f-6-ns,\n  .f-headline-ns { font-size: 6rem; }\n  .f-5-ns,\n  .f-subheadline-ns { font-size: 5rem; }\n  .f1-ns { font-size: 3rem; }\n  .f2-ns { font-size: 2.25rem; }\n  .f3-ns { font-size: 1.5rem; }\n  .f4-ns { font-size: 1.25rem; }\n  .f5-ns { font-size: 1rem; }\n  .f6-ns { font-size: .875rem; }\n}\n\n@media screen and (min-width: 48em) and (max-width: 64em) {\n  .f-6-m,\n  .f-headline-m { font-size: 6rem; }\n  .f-5-m,\n  .f-subheadline-m { font-size: 5rem; }\n  .f1-m { font-size: 3rem; }\n  .f2-m { font-size: 2.25rem; }\n  .f3-m { font-size: 1.5rem; }\n  .f4-m { font-size: 1.25rem; }\n  .f5-m { font-size: 1rem; }\n  .f6-m { font-size: .875rem; }\n}\n\n@media screen and (min-width: 64em) {\n  .f-6-l,\n  .f-headline-l {\n    font-size: 6rem;\n  }\n  .f-5-l,\n  .f-subheadline-l {\n    font-size: 5rem;\n  }\n  .f1-l { font-size: 3rem; }\n  .f2-l { font-size: 2.25rem; }\n  .f3-l { font-size: 1.5rem; }\n  .f4-l { font-size: 1.25rem; }\n  .f5-l { font-size: 1rem; }\n  .f6-l { font-size: .875rem; }\n}\n") || true) && "_738c7834")
 ;((require('insert-css')("/*\n\n   FONT FAMILY GROUPS\n\n*/\n\n\n.sans-serif {\n  font-family: -apple-system, BlinkMacSystemFont,\n               'avenir next', avenir,\n               helvetica, 'helvetica neue',\n               ubuntu,\n               roboto, noto,\n               'segoe ui', arial,\n               sans-serif;\n}\n\n.serif {\n  font-family: georgia,\n               times,\n               serif;\n}\n\n.system-sans-serif {\n  font-family: sans-serif;\n}\n\n.system-serif {\n  font-family: serif;\n}\n\n\n/* Monospaced Typefaces (for code) */\n\n/* From http://cssfontstack.com */\ncode, .code {\n  font-family: Consolas,\n               monaco,\n               monospace;\n}\n\n\n/* Sans-Serif Typefaces */\n\n.helvetica {\n  font-family: 'helvetica neue', helvetica,\n               sans-serif;\n}\n\n\n/* Serif Typefaces */\n\n.georgia {\n  font-family: georgia,\n               serif;\n}\n\n.times {\n  font-family: times,\n               serif;\n}\n\n.bodoni {\n  font-family: \"Bodoni MT\",\n                serif;\n}\n\n.calisto {\n  font-family: \"Calisto MT\",\n                serif;\n}\n\n.garamond {\n  font-family: garamond,\n               serif;\n}\n\n") || true) && "_9851921d")
 ;((require('insert-css')("/*\n\n   LINE HEIGHT / LEADING\n\n*/\n\n  .lh-solid { line-height: 1; }\n  .lh-title { line-height: 1.3; }\n  .lh-copy  { line-height: 1.6; }\n\n@media screen and (min-width: 48em) {\n  .lh-solid-ns { line-height: 1; }\n  .lh-title-ns { line-height: 1.3; }\n  .lh-copy-ns  { line-height: 1.6; }\n}\n\n@media screen and (min-width: 48em) and (max-width: 64em) {\n  .lh-solid-m { line-height: 1; }\n  .lh-title-m { line-height: 1.3; }\n  .lh-copy-m  { line-height: 1.6; }\n}\n\n@media screen and (min-width: 64em) {\n  .lh-solid-l { line-height: 1; }\n  .lh-title-l { line-height: 1.3; }\n  .lh-copy-l  { line-height: 1.6; }\n}\n\n") || true) && "_5698575d")
 
-const headlineView = require('./views/headline')
-const statsView = require('./views/stats')
-const footerView = require('./views/footer')
-const aboutView = require('./views/about')
-
-const wrapRoot = require('./elements/wrap-root')
-
 const app = choo()
 
 app.router((route) => [
   route('/', wrapRoot([
-    headlineView,
-    statsView,
-    aboutView,
-    footerView
+    require('./views/headline'),
+    require('./views/stats'),
+    require('./views/about'),
+    require('./views/train'),
+    require('./views/architecture'),
+    require('./views/related'),
+    require('./views/footer')
   ]))
 ])
 
 const tree = app.start('#app-root')
 document.body.appendChild(tree)
 
-},{"./elements/wrap-root":"/Users/yw/src/yw/www-choo/elements/wrap-root.js","./views/about":"/Users/yw/src/yw/www-choo/views/about.js","./views/footer":"/Users/yw/src/yw/www-choo/views/footer.js","./views/headline":"/Users/yw/src/yw/www-choo/views/headline.js","./views/stats":"/Users/yw/src/yw/www-choo/views/stats.js","choo":"/Users/yw/src/yw/www-choo/node_modules/choo/index.js","insert-css":"/Users/yw/src/yw/www-choo/node_modules/insert-css/index.js"}],"/Users/yw/src/yw/www-choo/elements/octo.js":[function(require,module,exports){
+},{"./elements/wrap-root":"/Users/yw/src/yw/www-choo/elements/wrap-root.js","./views/about":"/Users/yw/src/yw/www-choo/views/about.js","./views/architecture":"/Users/yw/src/yw/www-choo/views/architecture.js","./views/footer":"/Users/yw/src/yw/www-choo/views/footer.js","./views/headline":"/Users/yw/src/yw/www-choo/views/headline.js","./views/related":"/Users/yw/src/yw/www-choo/views/related.js","./views/stats":"/Users/yw/src/yw/www-choo/views/stats.js","./views/train":"/Users/yw/src/yw/www-choo/views/train.js","choo":"/Users/yw/src/yw/www-choo/node_modules/choo/index.js","insert-css":"/Users/yw/src/yw/www-choo/node_modules/insert-css/index.js"}],"/Users/yw/src/yw/www-choo/elements/octo.js":[function(require,module,exports){
 const sf = 0
 const view = require('bel')
 
@@ -60,7 +58,7 @@ const view = require('bel')
 
 const octo = require('./octo')
 
-const id = ((require('insert-css')("._3b9c9673 > section {\n    padding-top: 64px;\n    padding-top: 4rem;\n    padding-bottom: 32px;\n    padding-bottom: 2rem;\n  }") || true) && "_3b9c9673")
+const id = ((require('insert-css')("._fd194258 > section {\n    padding-top: 64px;\n    padding-top: 4rem;\n    padding-bottom: 64px;\n    padding-bottom: 4rem;\n  }") || true) && "_fd194258")
 
 module.exports = wrapRoot
 
@@ -2952,8 +2950,8 @@ const view = require('bel')
 
 const content = `
   Choo is a cute little framework that does more with less. It's fun, fast, and
-  packs a functional lil' architecture. It can be rendered anywhere and runs
-  real smooth.
+  packs a functional lil' architecture. It can be rendered anywhere and doesn't
+  discriminate between soloists and large teams.
 `
 
 module.exports = footer
@@ -2968,6 +2966,44 @@ function footer () {
       <p class="f3 f4-ns code lh-copy left-align px2 max-width-2">
         ${content}
       </p>
+    </section>
+  `
+}
+
+},{"bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js"}],"/Users/yw/src/yw/www-choo/views/architecture.js":[function(require,module,exports){
+const view = require('bel')
+
+const content = `
+ ┌───────────────────────────┐     ┌────────┐
+ │    ┌─────────────────┐    │     │  User  │
+ ├────│  Subscriptions  │    │     └────────┘
+ │    ├─────────────────┤    │          │
+ └────│     Effects     │◀───┤          ▼
+      ├─────────────────┤  Actions ┌────────┐
+      │    Reducers     │◀───┴─────│  DOM   │
+    Models──────────────┘          └────────┘
+               │                        ▲
+             State                   DOM│tree
+               ▼                        │
+          ┌────────┐               ┌────────┐
+          │ Router │─────State ───▶│ Views  │
+          └────────┘               └────────┘
+`
+
+module.exports = footer
+
+const bgColor = '#f5f5f5'
+
+function footer () {
+  return view`
+    <section
+      class="flex justify-center mx-auto"
+      style="background-color: ${bgColor}">
+      <div class="left-align px2" style="width: 32rem;">
+        <pre class="f6 code lh-copy">
+          ${content}
+        </pre>
+      </div>
     </section>
   `
 }
@@ -3017,10 +3053,34 @@ function headlineView () {
     <section style="background-color: rgb(255, 195, 228)">
       <div
         class="flex justify-center items-center flex-column center mx-auto"
-        style="max-width: 500px; height: calc(95vh - 6rem);"
+        style="max-width: 500px; height: calc(95vh - 8rem);"
         >
         <h1 class="f-headline bold sans-serif mb4">${headline}</h1>
         <h2 class="f1 bold code">${subheadline}</h2>
+      </div>
+    </section>
+  `
+}
+
+},{"bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js"}],"/Users/yw/src/yw/www-choo/views/related.js":[function(require,module,exports){
+const view = require('bel')
+
+const content = `
+`
+
+module.exports = relatedView
+
+const bgColor = '#fff'
+
+function relatedView () {
+  return view`
+    <section
+      class="flex justify-center mx-auto"
+      style="background-color: ${bgColor}">
+      <div class="left-align px2" style="width: 32rem;">
+        <pre class="f6 code lh-copy">
+          ${content}
+        </pre>
       </div>
     </section>
   `
@@ -3048,7 +3108,7 @@ function statsView () {
         <span class="f2 f4-ns bold mr3 sans-serif">${version}</span>
         <span class="f2 f4-ns bold mr3 sans-serif">${size}</span>
       </div>
-      <div class="mb3">
+      <div>
         ${createDescriptions(descriptions)}
       </div>
     </section>
@@ -3066,4 +3126,34 @@ function createDescriptions (descriptions) {
   })
 }
 
-},{"bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js"}]},{},["/Users/yw/src/yw/www-choo/client.js"]);
+},{"bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js"}],"/Users/yw/src/yw/www-choo/views/train.js":[function(require,module,exports){
+const assert = require('assert')
+const view = require('bel')
+
+module.exports = trainView
+
+const bgColor = '#fff'
+
+function trainView () {
+  return view`
+    <section
+      class="flex justify-center mx-auto"
+      style="background-color: ${bgColor}">
+      <div class="left-align px2 f3 center">
+        ${createTrain(18)}
+      </div>
+    </section>
+  `
+}
+
+function createTrain (n) {
+  assert.equal(typeof n, 'number')
+  var train = '🚂'
+  const carriage = '🚋'
+  for (var i = 0; i < n; i++) {
+    train += carriage
+  }
+  return train
+}
+
+},{"assert":"/Users/yw/src/yw/www-choo/node_modules/browserify/node_modules/assert/assert.js","bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js"}]},{},["/Users/yw/src/yw/www-choo/client.js"]);
