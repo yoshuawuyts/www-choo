@@ -14,9 +14,9 @@ const app = choo()
 app.router((route) => [
   route('/', wrapRoot([
     require('./views/headline'),
-    require('./views/stats'),
-    require('./views/about'),
     require('./views/train'),
+    require('./views/about'),
+    require('./views/stats'),
     require('./views/architecture'),
     require('./views/related'),
     require('./views/footer')
