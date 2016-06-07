@@ -8,19 +8,21 @@ const descriptions = [
   { name: 'Dependencies', value: 6 }
 ]
 
-const version = 'v2.1.6'
+const version = 'v2.1.7'
 const size = '7.14kb'
 
 function statsView () {
   return view`
     <section class="flex flex-column mx-auto px2 max-width-2">
-      <div class="mb3">
-        <span class="f2 f4-ns bold mr3 sans-serif">choo</span>
-        <span class="f2 f4-ns bold mr3 sans-serif">${version}</span>
-        <span class="f2 f4-ns bold mr3 sans-serif">${size}</span>
-      </div>
-      <div>
-        ${createDescriptions(descriptions)}
+      <div class="mx-auto">
+        <div class="db mb3">
+          <span class="f2 f4-ns bold mr3 sans-serif">choo</span>
+          <span class="f2 f4-ns bold mr3 sans-serif">${version}</span>
+          <span class="f2 f4-ns bold mr3 sans-serif">${size}</span>
+        </div>
+        <div class="db">
+          ${createDescriptions(descriptions)}
+        </div>
       </div>
     </section>
   `
