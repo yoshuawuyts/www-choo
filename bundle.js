@@ -10,6 +10,9 @@ const choo = require('choo')
 
 const headlineView = require('./views/headline')
 const statsView = require('./views/stats')
+const footerView = require('./views/footer')
+const aboutView = require('./views/about')
+
 const wrapRoot = require('./elements/wrap-root')
 
 const app = choo()
@@ -17,14 +20,16 @@ const app = choo()
 app.router((route) => [
   route('/', wrapRoot([
     headlineView,
-    statsView
+    statsView,
+    aboutView,
+    footerView
   ]))
 ])
 
 const tree = app.start('#app-root')
 document.body.appendChild(tree)
 
-},{"./elements/wrap-root":"/Users/yw/src/yw/www-choo/elements/wrap-root.js","./views/headline":"/Users/yw/src/yw/www-choo/views/headline.js","./views/stats":"/Users/yw/src/yw/www-choo/views/stats.js","choo":"/Users/yw/src/yw/www-choo/node_modules/choo/index.js","insert-css":"/Users/yw/src/yw/www-choo/node_modules/insert-css/index.js"}],"/Users/yw/src/yw/www-choo/elements/octo.js":[function(require,module,exports){
+},{"./elements/wrap-root":"/Users/yw/src/yw/www-choo/elements/wrap-root.js","./views/about":"/Users/yw/src/yw/www-choo/views/about.js","./views/footer":"/Users/yw/src/yw/www-choo/views/footer.js","./views/headline":"/Users/yw/src/yw/www-choo/views/headline.js","./views/stats":"/Users/yw/src/yw/www-choo/views/stats.js","choo":"/Users/yw/src/yw/www-choo/node_modules/choo/index.js","insert-css":"/Users/yw/src/yw/www-choo/node_modules/insert-css/index.js"}],"/Users/yw/src/yw/www-choo/elements/octo.js":[function(require,module,exports){
 const sf = 0
 const view = require('bel')
 
@@ -55,7 +60,7 @@ const view = require('bel')
 
 const octo = require('./octo')
 
-const id = ((require('insert-css')("._e22bc7a3 > section {\n    margin-bottom: 64px;\n    margin-bottom: 4rem;\n  }") || true) && "_e22bc7a3")
+const id = ((require('insert-css')("._3b9c9673 > section {\n    padding-top: 64px;\n    padding-top: 4rem;\n    padding-bottom: 32px;\n    padding-bottom: 2rem;\n  }") || true) && "_3b9c9673")
 
 module.exports = wrapRoot
 
@@ -2942,7 +2947,57 @@ Trie.prototype.mount = function (route, trie) {
   }
 }
 
-},{"assert":"/Users/yw/src/yw/www-choo/node_modules/browserify/node_modules/assert/assert.js","xtend":"/Users/yw/src/yw/www-choo/node_modules/sheet-router/node_modules/wayfarer/node_modules/xtend/immutable.js","xtend/mutable":"/Users/yw/src/yw/www-choo/node_modules/sheet-router/node_modules/wayfarer/node_modules/xtend/mutable.js"}],"/Users/yw/src/yw/www-choo/views/headline.js":[function(require,module,exports){
+},{"assert":"/Users/yw/src/yw/www-choo/node_modules/browserify/node_modules/assert/assert.js","xtend":"/Users/yw/src/yw/www-choo/node_modules/sheet-router/node_modules/wayfarer/node_modules/xtend/immutable.js","xtend/mutable":"/Users/yw/src/yw/www-choo/node_modules/sheet-router/node_modules/wayfarer/node_modules/xtend/mutable.js"}],"/Users/yw/src/yw/www-choo/views/about.js":[function(require,module,exports){
+const view = require('bel')
+
+const content = `
+  Choo is a cute little framework that does more with less. It's fun, fast, and
+  packs a functional lil' architecture. It can be rendered anywhere and runs
+  real smooth.
+`
+
+module.exports = footer
+
+const bgColor = '#f5f5f5'
+
+function footer () {
+  return view`
+    <section
+      class="flex justify-center mx-auto center"
+      style="background-color: ${bgColor}">
+      <p class="f3 f4-ns code lh-copy left-align px2 max-width-2">
+        ${content}
+      </p>
+    </section>
+  `
+}
+
+},{"bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js"}],"/Users/yw/src/yw/www-choo/views/footer.js":[function(require,module,exports){
+const view = require('bel')
+
+module.exports = footer
+
+const yoshUrl = 'https://twitter.com/yoshuawuyts'
+const contribUrl = 'https://github.com/yoshuawuyts/choo/graphs/contributors'
+const bgColor = '#f5f5f5'
+
+function footer () {
+  return view`
+    <section class="center" style="background-color: ${bgColor}">
+      <div class="code f5 lh-copy">
+        The little framework that could.
+      </div>
+      <div class="code f5 lh-copy">
+        <span>Built with ❤︎ by </span>
+        <a href=${yoshUrl}>Yoshua Wuyts</a>
+        <span>and </span>
+        <a href=${contribUrl}>contributors</a>
+      </div>
+    </section>
+  `
+}
+
+},{"bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js"}],"/Users/yw/src/yw/www-choo/views/headline.js":[function(require,module,exports){
 const view = require('bel')
 
 module.exports = headlineView
@@ -2952,8 +3007,8 @@ function headlineView () {
     view`<span>CH</span>`,
     view`<span style="letter-spacing: -0.1em;"> </span>`,
     view`<span>O</span>`,
-    view`<span style="letter-spacing: 0.05em;"> </span>`,
-    view`<span> O</span>`
+    view`<span style="letter-spacing: 0.07em;"> </span>`,
+    view`<span>O</span>`
   ]
 
   const subheadline = 'Sturdy frontend framework'.toUpperCase()
@@ -2962,7 +3017,7 @@ function headlineView () {
     <section style="background-color: rgb(255, 195, 228)">
       <div
         class="flex justify-center items-center flex-column center mx-auto"
-        style="max-width: 400px; height: 95vh;"
+        style="max-width: 500px; height: calc(95vh - 6rem);"
         >
         <h1 class="f-headline bold sans-serif mb4">${headline}</h1>
         <h2 class="f1 bold code">${subheadline}</h2>
@@ -2987,16 +3042,11 @@ const size = '7.14kb'
 
 function statsView () {
   return view`
-    <section
-      class="flex flex-column mx-auto"
-      style="max-width: 400px;">
+    <section class="flex flex-column mx-auto px2 max-width-2">
       <div class="mb3">
-        <h2 class="f1 bold code">Stats</h2>
-      </div>
-      <div class="mb3">
-        <span class="f4 bold mr3 sans-serif">choo</span>
-        <span class="f4 bold mr3 sans-serif">${version}</span>
-        <span class="f4 bold mr3 sans-serif">${size}</span>
+        <span class="f2 f4-ns bold mr3 sans-serif">choo</span>
+        <span class="f2 f4-ns bold mr3 sans-serif">${version}</span>
+        <span class="f2 f4-ns bold mr3 sans-serif">${size}</span>
       </div>
       <div class="mb3">
         ${createDescriptions(descriptions)}
@@ -3009,8 +3059,8 @@ function createDescriptions (descriptions) {
   return descriptions.map((description) => {
     return view`
       <dl class="inline-block pr3">
-        <dt class="f6 sans-serif">${description.name}</dt>
-        <dd class="f4 f2-ns bold lh-title sans-serif">${description.value}</dd>
+        <dt class="f3 f6-ns code">${description.name}</dt>
+        <dd class="f1 f2-ns bold lh-title sans-serif">${description.value}</dd>
       </dl>
     `
   })
