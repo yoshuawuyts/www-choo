@@ -7,7 +7,7 @@ const octo = require('./octo')
 const id = sf`
   :host > section {
     padding-top: 4rem;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
   }
 `
 

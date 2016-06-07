@@ -17,7 +17,7 @@ function headlineView () {
     <section style="background-color: rgb(255, 195, 228)">
       <div
         class="flex justify-center items-center flex-column center mx-auto"
-        style="max-width: 500px; height: calc(95vh - 6rem);"
+        style="max-width: 500px; height: calc(95vh - 8rem);"
         >
         <h1 class="f-headline bold sans-serif mb4">${headline}</h1>
         <h2 class="f1 bold code">${subheadline}</h2>

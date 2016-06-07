@@ -19,7 +19,7 @@ function statsView () {
         <span class="f2 f4-ns bold mr3 sans-serif">${version}</span>
         <span class="f2 f4-ns bold mr3 sans-serif">${size}</span>
       </div>
-      <div class="mb3">
+      <div>
         ${createDescriptions(descriptions)}
       </div>
     </section>
