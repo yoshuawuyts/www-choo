@@ -1,10 +1,25 @@
+const sf = require('sheetify')
 const view = require('bel')
+
+const id = sf`
+  @media (min-width: 40em) {
+    :host > div {
+      flex-direction: column;
+    }
+  }
+`
 
 const content = [
   { name: 'pull-stream', url: 'https://github.com/pull-stream/pull-stream' },
   { name: 'stack.gl', url: 'http://stack.gl' },
   { name: 'yo-yo', url: 'https://github.com/maxogden/yo-yo' },
-  { name: 'bel', url: 'https://github.com/shama/bel' }
+  { name: 'bel', url: 'https://github.com/shama/bel' },
+  { name: 'lebron', url: 'http://lebron.technology' },
+  { name: 'sheetify', url: 'https://github.com/stackcss/sheetify' },
+  { name: 'standard', url: 'http://standardjs.com' },
+  { name: 'tachyons', url: 'http://tachyons.io' },
+  { name: 'basscss', url: 'http://www.basscss.com' },
+  { name: 'stackcss', url: 'https://github.com/stackcss' }
 ]
 
 module.exports = relatedView
@@ -15,7 +30,7 @@ const title = 'Friends'
 function relatedView () {
   return view`
     <section
-      class="flex justify-center mx-auto"
+      class="${id} flex justify-center mx-auto"
       style="background-color: ${bgColor}">
       <div class="flex left-align px2 max-width-2">
         <h1 class="f3 bold code mr4 lh-copy">${title}</h1>

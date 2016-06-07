@@ -26,7 +26,7 @@ function footer () {
     <section
       class="flex justify-center mx-auto"
       style="background-color: ${bgColor}">
-      <div class="left-align px2" style="width: 32rem;">
+      <div class="left-align px2 overflow-auto">
         <pre class="f6 code lh-copy">
           ${content}
         </pre>

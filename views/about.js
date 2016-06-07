@@ -15,7 +15,7 @@ function footer () {
     <section
       class="flex justify-center mx-auto center"
       style="background-color: ${bgColor}">
-      <p class="f3 f4-ns code lh-copy left-align px2 max-width-2">
+      <p class="f5 f4-ns code lh-copy left-align px2 max-width-2">
         ${content}
       </p>
     </section>

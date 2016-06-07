@@ -11,7 +11,7 @@ function trainView () {
     <section
       class="flex justify-center mx-auto"
       style="background-color: ${bgColor}">
-      <div class="left-align px2 f3 center">
+      <div class="left-align px2 f3 f3-ns center">
         ${createTrain(trainCount(maxTrains))}
       </div>
     </section>
