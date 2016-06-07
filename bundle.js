@@ -2963,7 +2963,7 @@ function footer () {
     <section
       class="flex justify-center mx-auto center"
       style="background-color: ${bgColor}">
-      <p class="f3 f4-ns code lh-copy left-align px2 max-width-2">
+      <p class="f5 f4-ns code lh-copy left-align px2 max-width-2">
         ${content}
       </p>
     </section>
@@ -2999,7 +2999,7 @@ function footer () {
     <section
       class="flex justify-center mx-auto"
       style="background-color: ${bgColor}">
-      <div class="left-align px2" style="width: 32rem;">
+      <div class="left-align px2 overflow-auto">
         <pre class="f6 code lh-copy">
           ${content}
         </pre>
@@ -3055,7 +3055,9 @@ function headlineView () {
         class="flex justify-center items-center flex-column center mx-auto"
         style="max-width: 500px; height: calc(95vh - 8rem);"
         >
-        <h1 class="f-headline bold sans-serif mb4">${headline}</h1>
+        <h1 class="f-subheadline f-headline-ns bold sans-serif mb4">
+          ${headline}
+        </h1>
         <h2 class="f1 bold code">${subheadline}</h2>
       </div>
     </section>
@@ -3063,30 +3065,55 @@ function headlineView () {
 }
 
 },{"bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js"}],"/Users/yw/src/yw/www-choo/views/related.js":[function(require,module,exports){
+const sf = 0
 const view = require('bel')
 
-const content = `
-`
+const id = ((require('insert-css')("@media (min-width: 40em) {\n    ._b8bc8e15 > div {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n      -webkit-flex-direction: column;\n          -ms-flex-direction: column;\n              flex-direction: column;\n    }\n  }") || true) && "_b8bc8e15")
+
+const content = [
+  { name: 'pull-stream', url: 'https://github.com/pull-stream/pull-stream' },
+  { name: 'stack.gl', url: 'http://stack.gl' },
+  { name: 'yo-yo', url: 'https://github.com/maxogden/yo-yo' },
+  { name: 'bel', url: 'https://github.com/shama/bel' },
+  { name: 'lebron', url: 'http://lebron.technology' },
+  { name: 'sheetify', url: 'https://github.com/stackcss/sheetify' },
+  { name: 'standard', url: 'http://standardjs.com' },
+  { name: 'tachyons', url: 'http://tachyons.io' },
+  { name: 'basscss', url: 'http://www.basscss.com' },
+  { name: 'stackcss', url: 'https://github.com/stackcss' }
+]
 
 module.exports = relatedView
 
 const bgColor = '#fff'
+const title = 'Friends'
 
 function relatedView () {
   return view`
     <section
-      class="flex justify-center mx-auto"
+      class="${id} flex justify-center mx-auto"
       style="background-color: ${bgColor}">
-      <div class="left-align px2" style="width: 32rem;">
-        <pre class="f6 code lh-copy">
-          ${content}
-        </pre>
+      <div class="flex left-align px2 max-width-2">
+        <h1 class="f3 bold code mr4 lh-copy">${title}</h1>
+        <div>
+          ${createList(content)}
+        </div>
       </div>
     </section>
   `
 }
 
-},{"bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js"}],"/Users/yw/src/yw/www-choo/views/stats.js":[function(require,module,exports){
+function createList (data) {
+  return data.map((pair) => {
+    return view`
+      <a href=${pair.url} class="col-6 inline-block f3 f4-ns code lh-copy">
+        ${pair.name}
+      </a>
+    `
+  })
+}
+
+},{"bel":"/Users/yw/src/yw/www-choo/node_modules/bel/index.js","insert-css":"/Users/yw/src/yw/www-choo/node_modules/insert-css/index.js"}],"/Users/yw/src/yw/www-choo/views/stats.js":[function(require,module,exports){
 const view = require('bel')
 
 module.exports = statsView
@@ -3094,22 +3121,24 @@ module.exports = statsView
 const descriptions = [
   { name: 'Lines', value: 237 },
   { name: 'Methods', value: 6 },
-  { name: 'Dependencies', value: 6 }
+  { name: 'Deps', value: 6 }
 ]
 
-const version = 'v2.1.6'
+const version = 'v2.1.7'
 const size = '7.14kb'
 
 function statsView () {
   return view`
     <section class="flex flex-column mx-auto px2 max-width-2">
-      <div class="mb3">
-        <span class="f2 f4-ns bold mr3 sans-serif">choo</span>
-        <span class="f2 f4-ns bold mr3 sans-serif">${version}</span>
-        <span class="f2 f4-ns bold mr3 sans-serif">${size}</span>
-      </div>
-      <div>
-        ${createDescriptions(descriptions)}
+      <div class="mx-auto">
+        <div class="db mb3">
+          <span class="f4 f4-ns bold mr3 sans-serif">choo</span>
+          <span class="f4 f4-ns bold mr3 sans-serif">${version}</span>
+          <span class="f4 f4-ns bold mr3 sans-serif">${size}</span>
+        </div>
+        <div class="db">
+          ${createDescriptions(descriptions)}
+        </div>
       </div>
     </section>
   `
@@ -3119,8 +3148,8 @@ function createDescriptions (descriptions) {
   return descriptions.map((description) => {
     return view`
       <dl class="inline-block pr3">
-        <dt class="f3 f6-ns code">${description.name}</dt>
-        <dd class="f1 f2-ns bold lh-title sans-serif">${description.value}</dd>
+        <dt class="f4 f6-ns code">${description.name}</dt>
+        <dd class="f3 f2-ns bold lh-title sans-serif">${description.value}</dd>
       </dl>
     `
   })
@@ -3140,7 +3169,7 @@ function trainView () {
     <section
       class="flex justify-center mx-auto"
       style="background-color: ${bgColor}">
-      <div class="left-align px2 f3 center">
+      <div class="left-align px2 f3 f3-ns center">
         ${createTrain(trainCount(maxTrains))}
       </div>
     </section>
