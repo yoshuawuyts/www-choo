@@ -15,9 +15,9 @@ const app = choo()
 app.router((route) => [
   route('/', wrapRoot([
     require('./views/headline'),
-    require('./views/stats'),
-    require('./views/about'),
     require('./views/train'),
+    require('./views/about'),
+    require('./views/stats'),
     require('./views/architecture'),
     require('./views/related'),
     require('./views/footer')
@@ -3133,6 +3133,7 @@ const view = require('bel')
 module.exports = trainView
 
 const bgColor = '#fff'
+const maxTrains = 7
 
 function trainView () {
   return view`
@@ -3140,10 +3141,14 @@ function trainView () {
       class="flex justify-center mx-auto"
       style="background-color: ${bgColor}">
       <div class="left-align px2 f3 center">
-        ${createTrain(18)}
+        ${createTrain(trainCount(maxTrains))}
       </div>
     </section>
   `
+}
+
+function trainCount (max) {
+  return Math.round(Math.random() * max)
 }
 
 function createTrain (n) {
