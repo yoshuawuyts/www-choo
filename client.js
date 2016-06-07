@@ -16,7 +16,9 @@ app.router((route) => [
     require('./views/headline'),
     require('./views/stats'),
     require('./views/about'),
+    require('./views/train'),
     require('./views/architecture'),
+    require('./views/related'),
     require('./views/footer')
   ]))
 ])
