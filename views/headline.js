@@ -7,8 +7,8 @@ function headlineView () {
     view`<span>CH</span>`,
     view`<span style="letter-spacing: -0.1em;"> </span>`,
     view`<span>O</span>`,
-    view`<span style="letter-spacing: 0.05em;"> </span>`,
-    view`<span> O</span>`
+    view`<span style="letter-spacing: 0.07em;"> </span>`,
+    view`<span>O</span>`
   ]
 
   const subheadline = 'Sturdy frontend framework'.toUpperCase()
