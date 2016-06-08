@@ -2,7 +2,7 @@ const sf = require('sheetify')
 const view = require('bel')
 
 const id = sf`
-  @media (min-width: 40em) {
+  @media (max-width: 40em) {
     :host > div {
       flex-direction: column;
     }
@@ -33,7 +33,7 @@ function relatedView () {
       class="${id} flex justify-center mx-auto"
       style="background-color: ${bgColor}">
       <div class="flex left-align px2 max-width-2">
-        <h1 class="f3 bold code mr4 lh-copy">${title}</h1>
+        <h1 class="f3 mr4 mb2 bold code lh-copy">${title}</h1>
         <div>
           ${createList(content)}
         </div>
