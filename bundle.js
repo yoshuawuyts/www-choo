@@ -3068,7 +3068,7 @@ function headlineView () {
 const sf = 0
 const view = require('bel')
 
-const id = ((require('insert-css')("@media (min-width: 40em) {\n    ._b8bc8e15 > div {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n      -webkit-flex-direction: column;\n          -ms-flex-direction: column;\n              flex-direction: column;\n    }\n  }") || true) && "_b8bc8e15")
+const id = ((require('insert-css')("@media (max-width: 40em) {\n    ._482e4d17 > div {\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n      -webkit-flex-direction: column;\n          -ms-flex-direction: column;\n              flex-direction: column;\n    }\n  }") || true) && "_482e4d17")
 
 const content = [
   { name: 'pull-stream', url: 'https://github.com/pull-stream/pull-stream' },
@@ -3094,7 +3094,7 @@ function relatedView () {
       class="${id} flex justify-center mx-auto"
       style="background-color: ${bgColor}">
       <div class="flex left-align px2 max-width-2">
-        <h1 class="f3 bold code mr4 lh-copy">${title}</h1>
+        <h1 class="f3 mr4 mb2 bold code lh-copy">${title}</h1>
         <div>
           ${createList(content)}
         </div>
