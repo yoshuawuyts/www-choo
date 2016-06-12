@@ -4,17 +4,21 @@ dirname=$(dirname "$(readlink -f "$0")")
 gh_deploy="$dirname/../node_modules/.bin/gh-pages"
 
 # start node
-npm run start&
+npm run start& > /dev/null
 pid="$!"
+printf "pid: %s" "$pid"
 sleep 5
 
 # write files to disk
 mkdir -p dist
-curl localhost:8080/ > dist/index.html
-curl localhost:8080/bundle.js > dist/bundle.js
+curl -s localhost:8080/ > dist/index.html
+curl -s localhost:8080/bundle.js > dist/bundle.js
 
 # deploy
 "$gh_deploy" -d dist/
 
 # kill node
 kill "$pid"
+
+# only works on my machine, in case pid fails
+ports | grep 8080 | awk '{ print $2}' | xargs kill
