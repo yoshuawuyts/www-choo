@@ -41,6 +41,7 @@
     "browserify": "^13.0.1",
     "choo": "^2.1.6",
     "css-wipe": "^4.2.2",
+    "global": "^4.3.0",
     "http-ndjson": "^3.0.0",
     "hyperxify": "^2.0.1",
     "insert-css": "^0.2.0",
